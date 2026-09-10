@@ -55,6 +55,7 @@
     color:var(--ink);
     font-family:'Karla', ui-sans-serif, system-ui, sans-serif;
     min-height:100vh;
+    min-height:100dvh;
     overflow-x:hidden;
     position:relative;
   }
@@ -70,11 +71,29 @@
   .stage{
     position:relative;
     min-height:100vh;
+    min-height:100dvh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:clamp(18px, 4vh, 32px);
+    padding:6vh 20px;
+  }
+  .stage-heading{
+    text-align:center;
+    font-family:'Caveat', cursive;
+    font-size:clamp(1.3rem, 4.5vw, 1.7rem);
+    color:color-mix(in srgb, var(--paper) 82%, transparent);
+    transition:opacity .4s ease;
+  }
+  .stage-heading.faded{ opacity:0; }
+  .reveal{
+    position:relative;
     display:grid;
     place-items:center;
-    padding:7vh 20px;
+    width:100%;
   }
-  .stage > *{ grid-area:1 / 1; }
+  .reveal > *{ grid-area:1 / 1; }
 
   /* ---------- floating bees & specks ---------- */
   .drift{
@@ -98,7 +117,7 @@
   /* ---------- envelope ---------- */
   .envelope-wrap{
     position:relative;
-    width:min(420px, 88vw);
+    width:min(420px, 90vw);
     aspect-ratio: 3 / 2;
     cursor:pointer;
     perspective:1400px;
@@ -162,13 +181,15 @@
   /* ---------- letter ---------- */
   .letter{
     position:relative;
-    width:min(620px, 92vw);
+    width:min(620px, 94vw);
     max-height:88vh;
+    max-height:85dvh;
     overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
     background:
       linear-gradient(180deg, color-mix(in srgb, var(--paper) 97%, var(--honey) 3%), var(--paper));
     border-radius:10px;
-    padding:clamp(28px,5vw,56px) clamp(24px,6vw,64px) 40px;
+    padding:clamp(24px,5vw,56px) clamp(20px,5.5vw,64px) 36px;
     box-shadow:0 40px 90px -30px rgba(0,0,0,.6), 0 0 0 1px color-mix(in srgb, var(--honey-deep) 30%, transparent);
     opacity:0;
     pointer-events:none;
@@ -284,6 +305,15 @@
   .note:nth-child(2){ --r:1.5deg; }
   .note:nth-child(3){ --r:-1deg; }
 
+  @media (max-width: 480px){
+    .corner{ width:28px; height:32px; }
+    .corner.tl{ top:10px; left:10px; }
+    .corner.br{ bottom:10px; right:10px; }
+    .dropcap::first-letter{ font-size:2.9em; }
+    .notes{ justify-content:center; }
+    .sign{ align-items:flex-start; }
+  }
+
   @media (prefers-reduced-motion: reduce){
     .env-flap, .letter, .envelope-wrap{ transition:none !important; }
     .drift span{ animation:none !important; display:none; }
@@ -294,6 +324,8 @@
 <div class="drift" id="drift" aria-hidden="true"></div>
 
 <div class="stage">
+  <div class="stage-heading" id="stageHeading">🐝 uma cartinha de aniversário pra você</div>
+  <div class="reveal">
   <div class="envelope-wrap" id="envelope" role="button" tabindex="0" aria-label="Abrir a carta">
     <div class="env-flap"></div>
     <div class="env-body"></div>
@@ -311,13 +343,13 @@
     <p class="eyebrow">20 de setembro · aniversário da Belly</p>
     <h1>Feliz aniversário,<br><span class="bee">Belly abeia</span> 🐝</h1>
 
-    <p class="dropcap">Belly, todo dia 20 de setembro eu paro pra pensar a mesma coisa: como é que uma pessoa consegue ser tão engraçada, tão barulhenta nos áudios de madrugada e tão importante pra mim ao mesmo tempo? Você consegue. E olha que você virou minha cunhada — mas faz tempo que isso ficou pequeno pra descrever a gente.</p>
+    <p class="dropcap">Belly, todo dia 20 de setembro eu paro pra pensar como a vida foi generosa comigo: além de ganhar uma cunhada, ganhei alguém em quem posso confiar de verdade — e isso eu não levo como certo.</p>
 
-    <p>A gente brinca que é só "cunhado", mas a verdade, e você sabe, é que virou uma das minhas <b>melhores amigas</b>. Ano passado eu te escrevi isso numa mensagem de aniversário e continua valendo, com juros: você merece tudo de bom, e pode contar comigo pra tudo, sempre. <i>É nóis, irmã. Tamo junto. Cobacai.</i></p>
+    <p>A gente vira família por acaso, mas continua por escolha. Com você foi assim: começou como "cunhada" e virou uma amizade de verdade, dessas que atravessam mudança de fase, de rotina, de tudo. Ano passado eu te escrevi que você merecia tudo de bom e podia contar comigo pra sempre. Continua valendo — e cada ano que passa isso fica mais verdadeiro.</p>
 
-    <p>Pro currículo fica registrado: sou o fotógrafo oficial que te deixa mais diva do que a realidade quando cê tá com cara de sono, disputei com honra o #banhomaisrapidodafamília, e uma vez pedi pra uma IA escrever a história de uma abelha chamada Isabelly só porque seu nome pedia — e olha que a IA entendeu o recado antes de mim.</p>
+    <p>Fico feliz de ter dividido tanta coisa boba e tanta coisa séria com você: as fotos que tiro tentando te deixar com uma cara melhor do que o dia estava sendo, as risadas bestas até tarde da noite, as conversas que tentam resolver o mundo em cinco minutos de áudio. São essas coisas pequenas que, juntas, viram uma amizade grande.</p>
 
-    <p>Enquanto isso a gente ri até de madrugada, resolve o mundo em áudio de cinco minutos e finge que vai combinar as coisas com mais antecedência da próxima vez. Que venham mais aniversários assim: mais risada travada tipo <i>KAKAKAKAKA</i>, mais rolê marcado de última hora, mais anos de história pra contar.</p>
+    <p>Que você tenha um ano lindo, do jeitinho que você merece. Que continue sendo essa pessoa genuína, engraçada e cheia de vida que todo mundo tem sorte de conhecer — e que eu tenho a sorte ainda maior de chamar de <b>família</b>.</p>
 
     <hr class="divider">
 
@@ -325,28 +357,31 @@
 
     <div class="sign">
       <div>
-        <div class="sign-text">Com todo carinho (e implicância de irmão mais velho),<br>Jão 🐝</div>
+        <div class="sign-text">Com todo o carinho,<br>Jão 🐝</div>
       </div>
       <div class="sign-date">feita com carinho pra você</div>
     </div>
 
     <div class="notes" aria-hidden="true">
       <div class="note">🐝 belly abeia desde 2023</div>
-      <div class="note">cobacai 🤙 tamo junto sempre</div>
+      <div class="note">família por acaso, amizade por escolha</div>
       <div class="note">📖 isabelly, a abelha curiosa</div>
     </div>
   </article>
+  </div>
 </div>
 
 <script>
   var envelope = document.getElementById('envelope');
   var letter = document.getElementById('letter');
+  var heading = document.getElementById('stageHeading');
   var opened = false;
 
   function openLetter(){
     if(opened) return;
     opened = true;
     envelope.classList.add('open');
+    heading.classList.add('faded');
     burstConfetti();
     setTimeout(function(){
       envelope.classList.add('hidden');
