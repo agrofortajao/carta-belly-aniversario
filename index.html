@@ -72,25 +72,19 @@
     position:relative;
     min-height:100vh;
     min-height:100dvh;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:clamp(18px, 4vh, 32px);
-    padding:6vh 20px;
   }
   .stage-heading{
+    position:fixed;
+    left:0; right:0; top:7vh;
     text-align:center;
+    padding:0 20px;
     font-family:'Caveat', cursive;
     font-size:clamp(1.3rem, 4.5vw, 1.7rem);
     color:color-mix(in srgb, var(--paper) 82%, transparent);
     transition:opacity .4s ease;
+    z-index:2;
   }
   .stage-heading.faded{ opacity:0; }
-  .reveal{
-    position:relative;
-    width:100%;
-  }
 
   /* ---------- floating bees & specks ---------- */
   .drift{
@@ -113,7 +107,7 @@
 
   /* ---------- envelope ---------- */
   .envelope-wrap{
-    position:absolute;
+    position:fixed;
     left:50%; top:50%;
     transform:translate(-50%,-50%);
     width:min(420px, 90vw);
@@ -179,7 +173,7 @@
 
   /* ---------- letter ---------- */
   .letter{
-    position:absolute;
+    position:fixed;
     left:50%; top:50%;
     width:min(620px, 94vw);
     max-height:88vh;
@@ -325,7 +319,6 @@
 
 <div class="stage">
   <div class="stage-heading" id="stageHeading">🐝 uma cartinha de aniversário pra você</div>
-  <div class="reveal">
   <div class="envelope-wrap" id="envelope" role="button" tabindex="0" aria-label="Abrir a carta">
     <div class="env-flap"></div>
     <div class="env-body"></div>
@@ -368,7 +361,6 @@
       <div class="note">📖 isabelly, a abelha curiosa</div>
     </div>
   </article>
-  </div>
 </div>
 
 <script>
