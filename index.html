@@ -89,11 +89,8 @@
   .stage-heading.faded{ opacity:0; }
   .reveal{
     position:relative;
-    display:grid;
-    place-items:center;
     width:100%;
   }
-  .reveal > *{ grid-area:1 / 1; }
 
   /* ---------- floating bees & specks ---------- */
   .drift{
@@ -116,7 +113,9 @@
 
   /* ---------- envelope ---------- */
   .envelope-wrap{
-    position:relative;
+    position:absolute;
+    left:50%; top:50%;
+    transform:translate(-50%,-50%);
     width:min(420px, 90vw);
     aspect-ratio: 3 / 2;
     cursor:pointer;
@@ -125,7 +124,7 @@
   }
   .envelope-wrap.hidden{
     opacity:0;
-    transform:scale(.92) translateY(10px);
+    transform:translate(-50%,-50%) scale(.92) translateY(10px);
     pointer-events:none;
   }
   .env-body{
@@ -180,7 +179,8 @@
 
   /* ---------- letter ---------- */
   .letter{
-    position:relative;
+    position:absolute;
+    left:50%; top:50%;
     width:min(620px, 94vw);
     max-height:88vh;
     max-height:85dvh;
@@ -193,12 +193,12 @@
     box-shadow:0 40px 90px -30px rgba(0,0,0,.6), 0 0 0 1px color-mix(in srgb, var(--honey-deep) 30%, transparent);
     opacity:0;
     pointer-events:none;
-    transform:translateY(26px) scale(.98);
+    transform:translate(-50%,-50%) translateY(26px) scale(.98);
     transition:opacity .6s ease .15s, transform .6s cubic-bezier(.2,.8,.2,1) .15s;
     scrollbar-width:thin;
     scrollbar-color: var(--honey-deep) transparent;
   }
-  .letter.show{ opacity:1; pointer-events:auto; transform:translateY(0) scale(1); }
+  .letter.show{ opacity:1; pointer-events:auto; transform:translate(-50%,-50%) translateY(0) scale(1); }
 
   .corner{
     position:absolute; width:40px; height:46px; opacity:.5;
