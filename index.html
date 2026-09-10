@@ -171,12 +171,13 @@
     padding:clamp(28px,5vw,56px) clamp(24px,6vw,64px) 40px;
     box-shadow:0 40px 90px -30px rgba(0,0,0,.6), 0 0 0 1px color-mix(in srgb, var(--honey-deep) 30%, transparent);
     opacity:0;
+    pointer-events:none;
     transform:translateY(26px) scale(.98);
     transition:opacity .6s ease .15s, transform .6s cubic-bezier(.2,.8,.2,1) .15s;
     scrollbar-width:thin;
     scrollbar-color: var(--honey-deep) transparent;
   }
-  .letter.show{ opacity:1; transform:translateY(0) scale(1); }
+  .letter.show{ opacity:1; pointer-events:auto; transform:translateY(0) scale(1); }
 
   .corner{
     position:absolute; width:40px; height:46px; opacity:.5;
